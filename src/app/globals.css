@@ -24,7 +24,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -55,26 +55,19 @@ body {
 
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
-@keyframes marquee-reverse {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
+.marquee-track {
+  animation: marquee 55s linear infinite;
 }
 
-.animate-marquee {
-  animation: marquee 40s linear infinite;
-}
-
-.animate-marquee-reverse {
-  animation: marquee-reverse 48s linear infinite;
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }

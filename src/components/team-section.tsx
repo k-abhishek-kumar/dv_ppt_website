@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { team } from "@/lib/site-data";
 
 export function TeamSection() {
@@ -16,14 +13,10 @@ export function TeamSection() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((member, i) => (
-            <motion.article
+          {team.map((member) => (
+            <article
               key={member.name}
               className="rounded-2xl border border-card-border bg-card p-6 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
             >
               <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent/10 text-lg font-semibold text-accent">
                 {member.initials}
@@ -31,7 +24,7 @@ export function TeamSection() {
               <h3 className="font-semibold">{member.name}</h3>
               <p className="mt-1 text-sm text-accent">{member.role}</p>
               <p className="mt-3 text-sm leading-relaxed text-muted">{member.bio}</p>
-            </motion.article>
+            </article>
           ))}
         </div>
       </div>
