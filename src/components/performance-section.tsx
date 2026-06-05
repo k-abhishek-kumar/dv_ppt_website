@@ -1,21 +1,18 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { useState } from "react";
-import { keyMetrics } from "@/lib/site-data";
+import { motion } from "framer-motion";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { keyMetrics, performanceData } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-
-const PerformanceChart = dynamic(
-  () => import("./performance-chart").then((mod) => mod.PerformanceChart),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="flex h-72 items-center justify-center text-sm text-muted md:h-80">
-        Loading chart...
-      </div>
-    ),
-  }
-);
 
 type Tab = "chart" | "metrics";
 
@@ -52,7 +49,13 @@ export function PerformanceSection() {
           ))}
         </div>
 
-        <div className="rounded-2xl border border-card-border bg-card p-6 md:p-8">
+        <motion.div
+          className="rounded-2xl border border-card-border bg-card p-6 md:p-8"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
           {tab === "chart" ? (
             <>
               <div className="mb-6">
@@ -61,7 +64,47 @@ export function PerformanceSection() {
                   Cumulative returns over the last month
                 </p>
               </div>
-              <PerformanceChart />
+              <div className="h-72 min-h-72 w-full min-w-0 md:h-80">
+                <ResponsiveContainer width="100%" height="100%" minWidth={0}>
+                  <AreaChart data={[...performanceData]}>
+                    <defs>
+                      <linearGradient id="returnGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#2dd4bf" stopOpacity={0.35} />
+                        <stop offset="100%" stopColor="#2dd4bf" stopOpacity={0} />
+                      </linearGradient>
+                    </defs>
+                    <CartesianGrid stroke="#1c2433" strokeDasharray="4 4" />
+                    <XAxis
+                      dataKey="day"
+                      tick={{ fill: "#8b9cb3", fontSize: 12 }}
+                      axisLine={false}
+                      tickLine={false}
+                    />
+                    <YAxis
+                      tick={{ fill: "#8b9cb3", fontSize: 12 }}
+                      axisLine={false}
+                      tickLine={false}
+                      tickFormatter={(v) => `${v}%`}
+                    />
+                    <Tooltip
+                      contentStyle={{
+                        background: "#0d1117",
+                        border: "1px solid #1c2433",
+                        borderRadius: "8px",
+                        color: "#f0f4f8",
+                      }}
+                      formatter={(value) => [`${value}%`, "Return"]}
+                    />
+                    <Area
+                      type="monotone"
+                      dataKey="return"
+                      stroke="#2dd4bf"
+                      strokeWidth={2}
+                      fill="url(#returnGradient)"
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
             </>
           ) : (
             <div className="grid gap-4 sm:grid-cols-2">
@@ -76,7 +119,7 @@ export function PerformanceSection() {
               ))}
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -9,7 +9,7 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-card-border/60 bg-background/95">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-card-border/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <a href="#" className="flex items-center gap-2 font-semibold tracking-tight">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-accent">

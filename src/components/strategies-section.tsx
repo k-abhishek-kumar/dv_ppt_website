@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Activity, Clock, LineChart, Shield } from "lucide-react";
 import { strategies } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
@@ -24,9 +27,13 @@ export function StrategiesSection() {
             const isActive = strategy.status === "Active";
 
             return (
-              <article
+              <motion.article
                 key={strategy.title}
-                className="rounded-2xl border border-card-border bg-card p-6 transition-colors hover:border-accent/30"
+                className="group rounded-2xl border border-card-border bg-card p-6 transition-colors hover:border-accent/30"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
               >
                 <div className="mb-4 flex items-start justify-between">
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 text-accent">
@@ -47,7 +54,7 @@ export function StrategiesSection() {
                 <p className="mt-2 text-sm leading-relaxed text-muted">
                   {strategy.description}
                 </p>
-              </article>
+              </motion.article>
             );
           })}
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { motion } from "framer-motion";
 import { Loader2, Mail, MapPin, Phone, Send } from "lucide-react";
 import { contactInfo } from "@/lib/site-data";
 
@@ -56,7 +57,13 @@ export function ContactSection() {
         </div>
 
         <div className="grid gap-10 lg:grid-cols-5">
-          <div className="lg:col-span-3">
+          <motion.div
+            className="lg:col-span-3"
+            initial={{ opacity: 0, x: -16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
             <div className="rounded-2xl border border-card-border bg-card p-6 md:p-8">
               <h3 className="text-lg font-semibold">Send us a message</h3>
               <p className="mt-1 text-sm text-muted">
@@ -135,9 +142,15 @@ export function ContactSection() {
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
 
-          <aside className="space-y-6 lg:col-span-2">
+          <motion.aside
+            className="space-y-6 lg:col-span-2"
+            initial={{ opacity: 0, x: 16 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
             {[
               { icon: Mail, label: "Email", value: contactInfo.email, href: `mailto:${contactInfo.email}` },
               { icon: Phone, label: "Phone", value: contactInfo.phone },
@@ -165,7 +178,7 @@ export function ContactSection() {
                 </div>
               </div>
             ))}
-          </aside>
+          </motion.aside>
         </div>
       </div>
     </section>
