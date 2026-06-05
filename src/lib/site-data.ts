@@ -70,7 +70,7 @@ export const team = [
     initials: "AK",
   },
   {
-    name: "Sreekrishna Ponnapathi",
+    name: "SreeKrishna Palaparthi",
     role: "IIT Guwahati Professor",
     bio: "Academic advisor and quantitative strategy consultant",
     initials: "SP",
