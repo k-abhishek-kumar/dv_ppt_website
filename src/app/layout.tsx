@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PaperTownResearch Capital | Quantitative Trading",
+  title: "PaperTown Insights | Quantitative Trading",
   description:
     "Advanced derivatives trading and quantitative research firm specializing in algorithmic strategies, real-time monitoring, and risk-managed portfolio solutions.",
 };

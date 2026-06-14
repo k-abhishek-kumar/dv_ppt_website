@@ -59,8 +59,8 @@ export const keyMetrics = [
 export const team = [
   {
     name: "Abhishek Jyoti",
-    role: "Founder & Quant Research",
-    bio: "Leading quantitative research and strategic direction",
+    role: "Quant Researcher",
+    bio: "Quantitative research and strategy development",
     initials: "AJ",
   },
   {

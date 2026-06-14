@@ -6,7 +6,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 sm:flex-row">
         <div className="flex items-center gap-2 text-sm text-muted">
           <TrendingUp className="h-4 w-4 text-accent" />
-          <span>PaperTownResearch Capital</span>
+          <span>PaperTown Insights</span>
         </div>
         <p className="text-sm text-muted">
           &copy; {new Date().getFullYear()} All rights reserved.

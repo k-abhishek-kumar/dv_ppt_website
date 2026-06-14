@@ -15,7 +15,7 @@ export function Header() {
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-accent">
             <TrendingUp className="h-4 w-4" />
           </span>
-          <span className="hidden sm:inline">PaperTownResearch</span>
+          <span className="hidden sm:inline">PaperTown Insights</span>
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
